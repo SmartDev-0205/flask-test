@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+
+<body>
+    <div class="container">
+        <h1>Crypto Todo List</h1>
+        <div>Add a new Coin items:
+            <form action="{{ url_for('add') }}" method="POST">
+                <input type="text" name="todoitem">
+                <input type="submit" value="Add Item">
+            </form>
+        </div>
+
+        <div>
+        <h2>Incomplete Items</h2>
+        <ul>
+            {% for todo in incomplete %}
+            <!-- show incomplete list here -->
+            <li style="font-size: 10pt">{{ todo[1] }} <a href="{{ url_for('complete', id=todo[0]) }}">Mark As Complete</a></li>
+            {% endfor %}
+        </ul>
+        <h2>Completed Items</h2>
+        <ul>
+            {% for todo in complete %} <!-- show complete list here -->
+            <li style="font-size: 20pt">{{ todo[1] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+</body>
+
+</html>
